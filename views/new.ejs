@@ -1,0 +1,43 @@
+<% include partials/header %>
+
+<!-- estava a tentar fazer o style da pagina mas o bootstrap esta desatualziado tenho de aprender.-->
+
+
+<div class="container">
+ 
+       <h1 class='text-center my-4'>Adicionar parque de campismo</h1>
+
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+             
+            <form action='/campgrounds' method='POST'>
+                <div class="form-group">
+                    <input class='form-control' type='text' name='name' placeholder='Nome'>
+                </div>
+            
+                <div class="form-group">
+                    <input class='form-control' type='text' name='image' placeholder='Link da imagem'>
+                </div>  
+                
+                 <div class="form-group">
+                    <input class='form-control' type='text' name='description' placeholder='Descrição'>
+                </div>  
+                
+                <div class="form-group">
+                    <input class='btn btn-large btn-success btn-block' type='submit'>
+                </div> 
+                
+            
+            
+             <a href='/campgrounds'>Voltar</a>
+            
+        </form>
+        </div>
+    </div>
+        
+        
+       
+ 
+</div>
+
+<% include partials/footer %>
