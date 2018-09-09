@@ -1,25 +1,16 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
 
 <div class='container mt-5'>
     <header class='jumbotron'>
        <div class='container'>
-            <h1>PTCamping</h1>
-            <p>Os melhores parques de campismo de Portugal</p>
+            <h1>TentLife</h1>
+            <p>View our hand-picked campgrounds from all over the world</p>
             <p>
-                    <a class='btn btn-success btn-large' href='campgrounds/new'>Adicionar novo parque de campismo</a>
+                    <a class='btn btn-success btn-large' href='campgrounds/new'>Add New Campground</a>
             </p>
         </div>
     </header>
-
-
-
-    <div class="row">
-        <div class="col-lg-12">
-            <h3>Os parque de campismo mais populares</h3>
-        </div>
-    </div>
-
 
     <div class="row text-center" style='display:flex; flex-wrap: wrap;'>
         <% campgrounds.forEach(function(campground) {  %>
@@ -30,7 +21,7 @@
                     <div class="caption">
                         <h4><%= campground.name %></h4>
                     </div>
-                    <a href="campgrounds/<%= campground._id %>" class="btn btn-success">Mais informação</a>
+                    <a href="campgrounds/<%= campground._id %>" class="btn btn-success">More info</a>
                  </div>
               </div>
         <% }) %>
@@ -39,4 +30,4 @@
 
 
 
-<% include partials/footer %>
+<% include ../partials/footer %>
