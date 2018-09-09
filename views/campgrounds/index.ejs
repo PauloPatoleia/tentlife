@@ -1,6 +1,5 @@
 <% include ../partials/header %>
 
-
 <div class='container mt-5'>
     <header class='jumbotron'>
        <div class='container'>
@@ -16,13 +15,21 @@
         <% campgrounds.forEach(function(campground) {  %>
 
               <div class="col-md-3 col-sm-6">
-                <div class='img-thumbnail'>
-                    <img style="width: 100%; height: 100%" src=<%= campground.img %> >
-                    <div class="caption">
-                        <h4><%= campground.name %></h4>
+                  <!-- The inline style should be moved to an external css file in the future-->
+                  <div class="card">
+                      <img class="card-img-top" src='<%= campground.img %> >' alt="Card image cap" style='width: 100%!important; height: 200px!important; object-fit: cover;'>
+                      <div class="card-body">
+                        <h5 class="card-title"><%= campground.name %></h5>
+                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More info</a>
+                      </div>
                     </div>
-                    <a href="/campgrounds/<%= campground._id %>" class="btn btn-success">More info</a>
-                 </div>
+                <!--<div class='img-thumbnail'>-->
+                <!--    <img style="width: 100%; height: 100%" src=<%= campground.img %> >-->
+                <!--    <div class="caption">-->
+                <!--        <h4><%= campground.name %></h4>-->
+                <!--    </div>-->
+                <!--    <a href="/campgrounds/<%= campground._id %>" class="btn btn-success">More info</a>-->
+                <!-- </div>-->
               </div>
         <% }) %>
     </div>
