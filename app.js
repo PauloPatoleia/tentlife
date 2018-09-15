@@ -50,12 +50,12 @@ app.get('/campgrounds', function(req, res) {
 })
 
 
-app.get('/campgrounds/new', function(req, res) {
+app.get('/campgrounds/new', isLoggedIn, function(req, res) {
     res.render('campgrounds/new.ejs')
 })
 
 
-app.post('/campgrounds', function(req, res) {
+app.post('/campgrounds', isLoggedIn, function(req, res) {
     var name = req.body.name;
     var img= req.body.image;
     var description = req.body.description;
@@ -87,7 +87,7 @@ app.get('/campgrounds/:id', function(req, res) {
 // COMMENT ROUTES 
 // =================
 
-app.get('/campgrounds/:id/comments/new', function(req, res) {
+app.get('/campgrounds/:id/comments/new', isLoggedIn, function(req, res) {
     
     Campground.findById(req.params.id, function(err, foundCampground) {
         if(err) {
@@ -98,7 +98,7 @@ app.get('/campgrounds/:id/comments/new', function(req, res) {
     })
 })
 
-app.post('/campgrounds/:id/comments', function(req, res) {
+app.post('/campgrounds/:id/comments', isLoggedIn, function(req, res) {
     
     Campground.findById(req.params.id, function(err, foundCampground) {
         if(err) {
@@ -148,9 +148,22 @@ app.post("/login", passport.authenticate("local",
     {
         successRedirect: "/campgrounds",
         failureRedirect: "/login"
-    }), function(req, res) {
+    }),function(req, res) {
   
 })
+
+app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/campgrounds");
+})
+
+function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next()
+    } else {
+        res.redirect("/login")
+    }
+}
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log('server running')
