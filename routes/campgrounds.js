@@ -23,7 +23,7 @@ router.get('/new', isLoggedIn, function(req, res) {
 
 router.post('/', isLoggedIn, function(req, res) {
     var name = req.body.name;
-    var img= req.body.image;
+    var img = req.body.image;
     var description = req.body.description;
     var newCampground = {name: name, img: img, description: description}
     
