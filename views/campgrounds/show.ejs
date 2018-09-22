@@ -1,4 +1,4 @@
-<% include ../partials/header %>s
+<% include ../partials/header %>
 
 <div class="container">
     
@@ -24,11 +24,14 @@
               <div class="card-body">
                 <h5 class="card-title"><%= campground.name %> <span class="float-sm-right">9.00$/Night</span> </h5>
                 <p class="card-text"><%= campground.description %></p>
+       
+                      <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
                 <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-primary">Edit</a>
-                
                  <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
                      <button class="btn btn-danger">Delete</button>
                  </form>
+                  <% }%>
+                  
               </div>
             </div>
             
