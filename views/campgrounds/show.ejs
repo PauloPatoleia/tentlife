@@ -26,9 +26,9 @@
                 <p class="card-text"><%= campground.description %></p>
        
                       <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
-                <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-primary">Edit</a>
+                <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-outline-primary">Edit</a>
                  <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-                     <button class="btn btn-danger">Delete</button>
+                     <button class="btn btn-outline-danger">Delete</button>
                  </form>
                   <% }%>
                   
@@ -54,6 +54,13 @@
                     <strong> <%= comment.author.username %></strong>   
                         <span class="float-sm-right">10 days ago</span>
                         <p><%= comment.text %></p>
+                        
+                        <a href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit" class="btn btn-outline-primary btn-sm">Edit</a>
+                        
+                        <form class="d-inline" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                             <button class="btn btn-outline-danger btn-sm">Delete</button>
+                         </form>
+                         
                         </div>
                    </div>
                    
