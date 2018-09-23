@@ -24,6 +24,8 @@
               <div class="card-body">
                 <h5 class="card-title"><%= campground.name %> <span class="float-sm-right">9.00$/Night</span> </h5>
                 <p class="card-text"><%= campground.description %></p>
+                
+                       <em> <small>Submitted By <%= campground.author.username %></small></em>
        
                       <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
                 <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-outline-primary">Edit</a>
@@ -54,12 +56,17 @@
                     <strong> <%= comment.author.username %></strong>   
                         <span class="float-sm-right">10 days ago</span>
                         <p><%= comment.text %></p>
-                        
+              
+                         
+                         <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                         
                         <a href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit" class="btn btn-outline-primary btn-sm">Edit</a>
                         
                         <form class="d-inline" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                              <button class="btn btn-outline-danger btn-sm">Delete</button>
                          </form>
+                         
+                         <% } %>
                          
                         </div>
                    </div>
