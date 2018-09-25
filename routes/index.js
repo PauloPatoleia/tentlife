@@ -19,9 +19,11 @@ router.post("/register", function(req, res) {
     User.register(new User({username: req.body.username}), req.body.password, function(err, user) {
         if(err) {
             console.log(err)
+            req.flash("error", err.message)
             return res.render('register')
         }
         passport.authenticate("local")(req, res, function(){
+            req.flash("success", "Welcome to TentLife" + user.username)
             res.redirect("/campgrounds")
         })
     })
@@ -29,7 +31,9 @@ router.post("/register", function(req, res) {
 
 
 router.get("/login", function(req, res) {
+    
     res.render("login")
+    
 })
 
 // login logic
@@ -43,15 +47,8 @@ router.post("/login", passport.authenticate("local",
 
 router.get("/logout", function(req, res) {
     req.logout();
+    req.flash('success', 'Logged You Out!')
     res.redirect("/campgrounds");
 })
-
-function isLoggedIn(req, res, next) {
-    if(req.isAuthenticated()) {
-        return next()
-    } else {
-        res.redirect("/login")
-    }
-}
 
 module.exports = router
