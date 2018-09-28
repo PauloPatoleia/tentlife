@@ -22,8 +22,9 @@ var express       = require("express"),
     
 
 
-
-mongoose.connect('mongodb://localhost/yelp_camp', { useNewUrlParser: true })
+console.log(process.env.DATABASEURL)
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true })
+// mongoose.connect('mongodb://yaeke:magalais1@ds115543.mlab.com:15543/tentlife', { useNewUrlParser: true })
 app.use(bodyParser.urlencoded({extended: true, useNewUrlParser: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'))

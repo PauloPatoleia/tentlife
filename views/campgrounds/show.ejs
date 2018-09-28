@@ -1,5 +1,7 @@
 <% include ../partials/header %>
 
+    <link rel="stylesheet" href="/stylesheets/show.css">
+
 <div class="container mt-5">
     
     <div class="row">
@@ -19,22 +21,24 @@
             
             <!--<h1 <%= campground.name %> </h1>-->
             
-            <div class="card preview-img">
-              <img class="card-img-top" src='<%= campground.img %>' alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title"><%= campground.name %> <span class="float-sm-right"><%= campground.price %> $/Night</span> </h5>
-                <p class="card-text"><%= campground.description %></p>
-                
-                       <em> <small>Submitted By <%= campground.author.username %></small></em>
-       
-                      <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
-                <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-outline-primary">Edit</a>
-                 <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-                     <button class="btn btn-outline-danger">Delete</button>
-                 </form>
-                  <% }%>
-                  
-              </div>
+            <div class="card-container">
+                <div class="card preview-img">
+                  <img class="card-img-top" src="<%= campground.img %>" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= campground.name %> <span class="float-sm-right"><%= campground.price %> $/Night</span> </h5>
+                    <p class="card-text"><%= campground.description %></p>
+                    
+                           <em> <small>Submitted By <%= campground.author.username %></small></em>
+           
+                          <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
+                    <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-outline-primary">Edit</a>
+                     <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                         <button class="btn btn-outline-danger">Delete</button>
+                     </form>
+                      <% }%>
+                      
+                  </div>
+                </div>
             </div>
             
             <!--<div class="thumbnail">-->
